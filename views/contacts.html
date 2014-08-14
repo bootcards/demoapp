@@ -1,0 +1,58 @@
+{{!< layout}}
+
+   
+		<div class="row">
+			
+			<div class="col-sm-5 bootcards-list" id="list">
+				<div class="panel panel-default">				
+					<div class="panel-body">
+						<div class="search-form">
+							<div class="row">
+							    <div class="col-xs-9">
+							      <div class="form-group">
+								      <input type="text" class="form-control" placeholder="Search Contacts...">
+								      <i class="fa fa-search"></i>
+							      </div>
+							    </div>
+							    <div class="col-xs-3">
+									<a class="btn btn-primary btn-block" href="/contacts/add"
+										data-toggle="modal"
+										data-target="#editModal">
+										<i class="fa fa-plus"></i> 
+										<span>Add</span>
+									</a>
+							    </div>
+							</div>						    
+						</div>					
+					</div>
+					<div class="list-group">
+	
+						{{#each contacts}}
+							<a class="list-group-item pjax" 
+					 			href="/contacts/{{this.id}}">
+								<img src="/images/{{this.profileImage}}" class="img-rounded pull-left"/>
+								<h4 class="list-group-item-heading">{{this.lastName}}, {{this.firstName}}</h4>
+								<p class="list-group-item-text">{{this.company}}</p>
+							</a>
+						{{/each}}
+						
+					</div>
+					<div class="panel-footer">
+						<small class="pull-left">Built with Bootcards - List</small>
+						<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/list-detailed"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-sm-7 bootcards-cards hidden-xs" id="listDetails">
+
+				<!--contact details & notes-->
+				{{> contact}}
+
+			</div>
+		</div>
+

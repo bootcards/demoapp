@@ -1,0 +1,76 @@
+{{!< layout}}
+
+<div class="row">
+
+	<div class="bootcards-cards">
+	
+		<div class="col-sm-6">
+	
+			<div class="panel panel-default bootcards-summary">
+	
+				<div class="panel-heading">
+					<h3 class="panel-title">Summary Card Heading</h3>
+				</div>
+	
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="/contacts" data-pjax="#main"
+							data-title="Contacts">
+								<i class="fa fa-3x fa-users"></i>
+								<h1>{{{count 'contacts'}}} <span>Contacts</span></h1>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="/companies" data-pjax="#main"
+							data-title="Companies">
+								<i class="fa fa-3x fa-building-o"></i>
+								<h1>{{{count 'companies'}}} <span>Companies</span></h1>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="/notes" data-pjax="#main"
+							data-title="Notes">
+								<i class="fa fa-3x fa-clipboard"></i>
+								<h1>{{{count 'notes'}}} <span>Notes</span></h1>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="/charts" data-pjax="#main"
+							data-title="Charts">
+								<i class="fa fa-3x fa-bar-chart-o"></i>
+								<h1>{{{count 'charts'}}} <span>Charts</span></h1>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="#">
+								<i class="fa fa-3x fa-files-o"></i>
+								<h1>54 <span>Files</span></h1>
+							</a>
+						</div>
+					</div>
+				</div>
+	
+				<div class="panel-footer">
+					<small class="pull-left">Built with Bootcards - Summary Card</small>
+					<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/summary"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+				</div>	
+	
+			</div>
+	
+		</div>
+	
+		<div class="col-sm-6">
+
+			{{>charts/closed_sales}}
+			
+		</div>
+		
+	</div>
+
+</div>
+

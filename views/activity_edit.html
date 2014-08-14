@@ -1,0 +1,49 @@
+{{#if activity.isNew}}
+	<form class="form-horizontal" method="POST" action="/contact/{{activity.parentId}}/notes" data-pjax="#listDetails">
+{{else}}
+	<form class="form-horizontal" method="POST" action="/notes" data-pjax="#listDetails">
+{{/if}}
+
+<div class="modal-header">
+
+	{{>dialog_buttons}}
+
+	<h3 class="modal-title">
+		{{#if activity.isNew}}
+			New Note
+		{{else}}
+			Edit Note
+		{{/if}}
+	</h3>
+</div>
+
+<div class="modal-body">
+
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="contactId" value="{{activity.parentId}}">
+
+	{{>activity_form activity}}
+
+			
+</div>
+</form>
+
+{{#unless activity.isNew}}
+<div class="modal-footer">
+	<button class="btn btn-danger btn-block"
+		onclick="bootcards.confirmDelete('note');">
+		<i class="fa fa-trash-o"></i>
+		Delete Note
+	</button>		
+</div>	
+{{/unless}}
+
+<div class="modal-footer">
+	<small class="pull-left">Built with Bootcards - Form Card</small>
+	<a class="btn btn-link btn-xs pull-right"
+		href="/snippets/form-card"
+		data-toggle="modal"
+		data-target="#docsModal">
+		View Source</a>
+</div>	

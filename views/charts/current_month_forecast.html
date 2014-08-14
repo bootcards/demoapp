@@ -1,0 +1,111 @@
+<div>
+
+	<div class="panel panel-default bootcards-chart">
+		
+		<div class="panel-heading">
+			<h3 class="panel-title">Current month forecast vs quota - $000s</h3>					
+		</div>
+
+		<div id="bar1">
+
+			<!--bar chart-->
+			<div class="bootcards-chart-canvas" id="chartForecastVsQuota"></div>
+
+			<div class="panel-footer">
+				<button class="btn btn-default btn-block"
+					onClick="toggleChartData()">
+					<i class="fa fa-table"></i>
+					Show Data
+				</button>				
+			</div>
+		</div>
+		
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Chart Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/chart"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>					
+
+	</div>		
+
+	<!-- Table Card data -->
+	<div class="panel panel-default bootcards-table" style="display:none">
+		<div class="panel-heading">
+			<h3 class="panel-title">Current month forecast vs quota - $000s</h3>							
+		</div>	
+		<table class="table table-hover">
+			<thead>				
+				<tr class="active"><th>Name</th><th>Forecast</th><th>Quota</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Guy Bardsley</td><td>2750</td><td>4000</td></tr>
+				<tr><td>Adam Callahan</td><td>3300</td><td>4000</td></tr>
+				<tr><td>Arlo Geist</td><td>4500</td><td>4000</td></tr>
+				<tr><td>Sheila Hutchins</td><td>4100</td><td>4000</td></tr>
+				<tr><td>Jeanette Quijano</td><td>1800</td><td>2000</td></tr>
+				<tr><td>Simon Sweet</td><td>6200</td><td>4000</td></tr>
+				<tr><td><strong>Total</strong></td><td><strong>22650</strong></td><td><strong>22000</strong></td></tr>
+			</tbody>
+		</table>
+		<div class="panel-footer">
+			<button class="btn btn-default btn-block" onClick="toggleChartData()">
+				<i class="fa fa-bar-chart-o"></i>
+				Show Chart
+			</button>				
+		</div>		
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Table Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/table"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>											
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+/*
+ * Clear the target DOM element and draw the sample charts
+ * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
+ */
+var drawBarChartClosedSales = function() {
+
+	$("#chartForecastVsQuota").empty();
+
+	Morris.Bar({
+		element: 'chartForecastVsQuota',
+		data: [
+			{name: 'Guy Bardsley', forecast: 2750, quota: 4000},
+			{name: 'Adam Callahan', forecast: 3300, quota: 4000},
+			{name: 'Arlo Geist', forecast: 4500, quota: 4000},
+			{name: 'Sheila Hutchins', forecast: 4100, quota: 4000},
+			{name: 'Jeanette Quijano', forecast: 1800, quota: 2000},
+			{name: 'Simon Sweet', forecast: 6200, quota: 4000}
+		],
+		xkey: 'name',
+		ykeys: ['forecast', 'quota'],
+		labels: ['Forecast', 'Quota'],
+		xLabelAngle: 20,
+		hideHover: 'auto'
+	});
+
+}
+
+//draw the charts when the DOM is ready
+$(document).ready( function() {
+	drawBarChartClosedSales();
+});
+
+//on resize of the page: redraw the charts
+$(window)
+	.on('resize', function() {
+		drawBarChartClosedSales();
+	});
+
+</script>

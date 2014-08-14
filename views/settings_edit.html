@@ -1,0 +1,44 @@
+{{!< layout}}
+
+<div class="row">
+
+	<div class="col-sm-4 col-sm-offset-4 bootcards-cards">
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title pull-left">Settings</h3>
+				<a href="/settings" class="btn btn-success pull-right" data-pjax="#main">
+					Save
+				</a>
+			</div>
+
+			<div class="list-group">
+				<div class="list-group-item">
+					<label class="list-group-item-text">Username</label>
+					<div class="list-group-item-heading">
+						<input type="text" name="name" class="form-control" placeholder="Username"
+						value="{{settings.userName}}">
+					</div>
+				</div>
+				<div class="list-group-item">
+					<label class="list-group-item-text">Password</label>
+					<div class="list-group-item-heading">
+						<input type="text" name="name" class="form-control" placeholder="Password"
+						value="{{settings.password}}">
+					</div>
+				</div>
+				<div class="list-group-item">
+					<label class="list-group-item-text">Notifications</label>
+					<div class="list-group-item-heading">
+						<select name="type" class="form-control" value="{{company.type}}">
+							<option value="" selected>Select an interval...</option>
+							<option value="Daily">Daily</option>
+							<option value="Weekly">Weekly</option>
+							<option value="Monthly">Monthly</option>
+						</select>
+					</div>
+				</div>	
+							
+			</div>
+		</div>
+	</div>
+</div>

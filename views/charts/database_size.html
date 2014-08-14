@@ -1,0 +1,106 @@
+<div>
+
+	<div class="panel panel-default bootcards-chart">
+		
+		<div class="panel-heading">
+			<h3 class="panel-title">Database size - no of records</h3>					
+		</div>
+
+		<div>
+
+			<!--bar chart-->
+			<div class="bootcards-chart-canvas" id="chartDbSize"></div>
+
+			<div class="panel-footer">
+				<button class="btn btn-default btn-block"
+					onClick="toggleChartData()">
+					<i class="fa fa-table"></i>
+					Show Data
+				</button>				
+			</div>
+		</div>
+		
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Chart Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/chart"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>					
+
+	</div>		
+
+	<!-- Table Card data -->
+	<div class="panel panel-default bootcards-table" style="display:none">
+		<div class="panel-heading">
+			<h3 class="panel-title">Database size - no of records</h3>							
+		</div>	
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>				
+					<tr class="active"><th></th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>Companies</td><td>1256</td><td>1422</td><td>1475</td><td>1528</td></tr>
+					<tr><td>Contacts</td><td>3788</td><td>4350</td><td>4495</td><td>4601</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-default btn-block" onClick="toggleChartData()">
+				<i class="fa fa-bar-chart-o"></i>
+				Show Chart
+			</button>				
+		</div>		
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Table Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/table"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>											
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+/*
+ * Clear the target DOM element and draw the sample charts
+ * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
+ */
+var drawDbSizeChart = function() {
+
+	$("#chartDbSize").empty();
+
+	Morris.Area({
+    element: 'chartDbSize',
+    data: [
+      {period: '2014 Q1', companies: 1256, contacts : 3788},
+      {period: '2014 Q2', companies: 1422, contacts : 4350},
+      {period: '2014 Q3', companies: 1475, contacts : 4495},
+      {period: '2014 Q4', companies: 1528, contacts : 4601}
+    ],
+    xkey: 'period',
+    ykeys: ['companies', 'contacts'],
+    labels: ['Companies', 'Contacts'],
+    pointSize: 2,
+    hideHover: 'auto'
+  });
+
+}
+
+//draw the charts when the DOM is ready
+$(document).ready( function() {
+	drawDbSizeChart();
+});
+
+//on resize of the page: redraw the charts
+$(window)
+	.on('resize', function() {
+		drawDbSizeChart();
+	});
+
+</script>

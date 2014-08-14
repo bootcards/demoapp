@@ -1,0 +1,76 @@
+{{!< layout}}
+
+<div id="companyCard">
+	
+	<div class="panel panel-default">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">Company Details</h3>
+			<div class="btn-group pull-right visible-xs">
+				<a class="btn btn-primary" href="/companies/{{company.id}}/edit" 
+					data-toggle="modal"
+					data-target="#editModal">
+					<i class="fa fa-pencil"></i>
+					<span>Edit</span>
+				</a>
+			</div>
+			<a class="btn btn-primary pull-right hidden-xs" href="/companies/{{company.id}}/edit"
+				data-toggle="modal"
+				data-target="#editModal">
+				<i class="fa fa-pencil"></i>
+				<span>Edit</span>
+			</a>
+		</div>
+		<div class="list-group">
+			<div class="list-group-item">
+				<i class="fa fa-2x fa-building-o pull-left"></i>
+				<label>Name</label>
+				<h4 class="list-group-item-heading">{{company.name}}</h4>
+			</div>
+			{{#if company.type}}
+			<div class="list-group-item">
+				<label>Type</label>
+				<h4 class="list-group-item-heading">{{company.type}}</h4>
+			</div>
+			{{/if}}
+			{{#if company.website}}
+			<a class="list-group-item" href="{{company.website}}" target="_blank">
+				<label>Website</label>
+				<h4 class="list-group-item-heading">{{company.website}}</h4>
+			</a>
+			{{/if}}
+			{{#if company.city}}
+			<div class="list-group-item">
+				<label>City</label>
+				<h4 class="list-group-item-heading">{{company.city}}</h4>
+			</div>
+			{{/if}}
+			{{#if company.country}}
+			<div class="list-group-item">
+				<label>Country</label>
+				<h4 class="list-group-item-heading">{{company.country}}</h4>
+			</div>
+			{{/if}}
+			{{#if company.location}}
+			<div class="list-group-item">
+				<label>Location</label>
+				<h4 class="list-group-item-heading">{{company.location}}</h4>
+			</div>
+			{{/if}}
+		</div>
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Base Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/base-card-form"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>		
+	</div>
+
+</div>
+
+<!--list of contacts-->
+{{>contacts_for_parent this}}
+
+<!--list of activities-->
+{{>activities_for_company this}}

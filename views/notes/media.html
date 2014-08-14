@@ -1,0 +1,67 @@
+{{!< ../layout}}
+
+<div id="activityCard">
+	
+	<div class="panel panel-default bootcards-media">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">Media</h3>
+
+			<!--small screen component-->
+			<div class="btn-group pull-right visible-xs">
+				{{#if parent}}
+					{{#if parent.isContact}}
+						<a class="btn btn-primary" href="/contacts/{{parent.id}}/notes/{{note.id}}/edit" 
+							data-toggle="modal"
+							data-target="#editModal">
+					{{else}}
+						<a class="btn btn-primary" href="/notes/{{note.id}}/edit" 
+							data-toggle="modal"
+						data-target="#editModal">
+					{{/if}}
+				{{else}}
+					<a class="btn btn-primary" href="/notes/{{note.id}}/edit"	
+						data-toggle="modal"
+						data-target="#editModal">	
+				{{/if}}
+					<i class="fa fa-pencil"></i>
+					<span>Edit</span>
+				</a>
+			</div>	
+
+			<!--big screen component-->
+			{{#if parent}}
+				{{#if parent.isContact}}
+					<a class="btn btn-primary pull-right hidden-xs" href="/contacts/{{parent.id}}/notes/{{note.id}}/edit"
+						data-toggle="modal"
+						data-target="#editModal">
+				{{else}}
+					<a class="btn btn-primary pull-right hidden-xs" href="/notes/{{note.id}}/edit"
+						data-toggle="modal"
+						data-target="#editModal">
+				{{/if}}
+			{{else}}
+				<a class="btn btn-primary pull-right hidden-xs" href="/notes/{{note.id}}/edit"
+					data-toggle="modal"
+					data-target="#editModal">	
+			{{/if}}
+				<i class="fa fa-pencil"></i>
+				<span>Edit</span>
+			</a>
+
+		</div>
+		<div class="panel-body">
+			{{{note.details}}}
+		</div>
+		<img src="{{{note.src}}}" class="img-responsive"/>
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Media Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/media-card"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>			
+	</div>
+
+</div>
+

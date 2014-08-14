@@ -1,0 +1,65 @@
+{{!< layout}}
+  
+		<div class="row">
+			
+			<div class="col-sm-6 bootcards-list" id="list">		
+				<div class="panel panel-default">					
+					<div class="panel-body">
+						<div class="search-form">
+							<div class="row">
+							    <div class="col-xs-9">
+							      <div class="form-group">
+								      <input type="text" class="form-control" placeholder="Search Companies...">
+								      <i class="fa fa-search"></i>
+							      </div>
+							    </div>
+							    <div class="col-xs-3">
+									<a class="btn btn-primary btn-block" href="/companies/add"
+										data-toggle="modal"
+										data-target="#editModal">
+										<i class="fa fa-plus"></i> 
+										<span>Add</span>
+									</a>
+							    </div>
+							</div>						    
+						</div>				
+					</div>
+					<div class="list-group">
+						{{#each companies}}
+						<a class="list-group-item pjax" 
+					 			href="/companies/{{this.id}}">
+					 			
+							<div class="row">
+								<div class="col-sm-6">
+									<i class="fa fa-3x fa-building-o pull-left"></i>
+									<h4 class="list-group-item-heading">{{this.name}}</h4>
+									<p class="list-group-item-text">{{this.city}}, {{this.country}}</p>
+								</div>
+								<div class="col-sm-6">
+									<p class="list-group-item-text">Customer Type</p>
+									<p class="list-group-item-text">$35,000 Revenue YTD</p>
+								</div>
+							</div>
+							
+						</a>
+						{{/each}}
+					</div>
+					<div class="panel-footer">
+						<small class="pull-left">Built with Bootcards - Detailed List</small>
+						<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/list-detailed"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+					</div>					
+				</div>
+			</div>
+		
+			<div class="col-sm-6 bootcards-cards" id="listDetails">
+
+				<!--contact details & notes-->
+				{{> company}}
+				
+			</div>
+		</div>
+

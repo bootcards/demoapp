@@ -1,0 +1,39 @@
+{{!< layout}}
+
+<div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">Notes</h3>
+			<div class="btn-group pull-right">
+				<a class="btn btn-primary" href="/contacts/{{contact.id}}/notes/add"
+					data-toggle="modal"
+					data-target="#editModal">
+						<i class="fa fa-plus"></i>
+						<span>Add</span>
+				</a>
+			</div>							
+		</div>					
+		<div class="list-group">
+			{{#each contact.notes}}
+				<a class="list-group-item pjax" 
+						href="/contacts/{{../contact.id}}/notes/{{this.id}}">
+					<i class="fa fa-2x pull-left {{getIconForType this.type}}"></i>
+					<h4 class="list-group-item-heading">{{this.subject}}</h4>
+					<p class="list-group-item-text">{{formatDate this.date "long"}}</p>
+				</a>
+			{{else}}
+				<div class="list-group-item">No notes found</div>
+			{{/each}}
+		</div>
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - List</small>
+			<a class="btn btn-link btn-xs pull-right"
+					href="/snippets/list-card"
+					data-toggle="modal"
+					data-target="#docsModal">
+					View Source</a>
+		</div>			
+	</div>
+
+</div>

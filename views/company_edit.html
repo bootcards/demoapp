@@ -1,0 +1,99 @@
+<form class="form-horizontal" method="POST" action="/companies/{{company.id}}" data-pjax="#main">
+<div class="modal-header">
+
+	{{>dialog_buttons}}
+
+	<h3 class="modal-title">
+		{{#if company.isNew}}
+			New Company
+		{{else}}
+			Edit Company
+		{{/if}}
+	</h3>
+
+</div>
+<div class="modal-body">
+	<input type="hidden" name="_method" value="put">
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Name</label>
+		<div class="col-xs-9">
+			<input type="text" name="name" class="form-control" placeholder="Company name"
+			value="{{company.name}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Type</label>
+		<div class="col-xs-9">
+			<select name="type" class="form-control" value="{{company.type}}">
+				<option value="" selected>Select a Type...</option>
+				<option value="Prospect">Prospect</option>
+				<option value="Customer">Customer</option>
+				<option value="Inactive">Inactive</option>
+			</select>
+		</div>
+	</div>	
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Website</label>
+		<div class="col-xs-9">
+			<input type="url" name="website" class="form-control" 
+			placeholder="Website"
+			value="{{company.website}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">City</label>
+		<div class="col-xs-9">
+			<input type="text" name="city" class="form-control" placeholder="City"
+				value="{{company.city}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Country</label>
+		<div class="col-xs-9">
+			<input type="text" name="country" class="form-control" placeholder="Country"
+				value="{{company.country}}">
+		</div>
+	</div>	
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Location</label>
+		<div class="col-xs-9">
+			<input type="text" name="location" class="form-control" 
+			placeholder="Location"
+			value="{{company.location}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">Logo</label>
+		<div class="col-xs-9">
+			<input type="file" name="logo" id="logo" class="hide" placeholder="Logo"
+			value="{{company.logo}}">
+			<button class="btn btn-default btn-block" type="button">
+				<label for="logo">
+					<i class="fa fa-plus"></i>
+					Add Logo
+				</label>
+			</button>
+		</div>
+	</div>
+				
+</div>
+</form>	
+
+{{#unless company.isNew}}
+<div class="modal-footer">
+	<button type="submit" class="btn btn-danger btn-block"
+		onclick="bootcards.confirmDelete('company');">
+		<i class="fa fa-trash-o"></i>
+		Delete Company
+	</button>
+</div>	
+{{/unless}}
+
+<div class="modal-footer">
+	<small class="pull-left">Built with Bootcards - Form Card</small>
+	<a class="btn btn-link btn-xs pull-right"
+		href="/snippets/form-card"
+		data-toggle="modal"
+		data-target="#docsModal">
+		View Source</a>
+</div>	

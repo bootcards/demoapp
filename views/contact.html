@@ -1,0 +1,74 @@
+{{!< layout}}
+
+<div id="contactCard">
+	
+	<div class="panel panel-default">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">Contact Details</h3>
+			<div class="btn-group pull-right visible-xs">
+				<a class="btn btn-primary" href="/contacts/{{contact.id}}/edit"
+					data-toggle="modal"
+					data-target="#editModal">
+					<i class="fa fa-pencil"></i>
+					<span>Edit</span>
+				</a>
+			</div>	
+			<a class="btn btn-primary pull-right hidden-xs" href="/contacts/{{contact.id}}/edit"
+				data-toggle="modal"
+				data-target="#editModal">
+				<i class="fa fa-pencil"></i>
+				<span>Edit</span>
+			</a>
+		</div>
+		<div class="list-group">
+			<div class="list-group-item">
+				<img src="/images/{{contact.profileImage}}" class="img-rounded pull-left"/>
+				<label>Name</label>
+				<h4 class="list-group-item-heading">{{contact.lastName}}, {{contact.firstName}}</h4>
+			</div>
+			{{#if contact.company}}
+			<div class="list-group-item">
+				<label>Company</label>
+				<h4 class="list-group-item-heading">{{contact.company}}</h4>
+			</div>
+			{{/if}}
+			{{#if contact.jobTitle}}
+			<div class="list-group-item">
+				<label>Job Title</label>
+				<h4 class="list-group-item-heading">{{contact.jobTitle}}</h4>
+			</div>
+			{{/if}}
+			{{#if contact.department}}
+			<div class="list-group-item">
+				<label>Department</label>
+				<h4 class="list-group-item-heading">{{contact.department}}</h4>
+			</div>
+			{{/if}}
+			{{#if contact.phone}}
+			<a class="list-group-item" href="tel://{{contact.phone}}">
+				<label>Phone</label>
+				<h4 class="list-group-item-heading">{{contact.phone}}</h4>
+			</a>
+			{{/if}}
+			{{#if contact.email}}
+			<a class="list-group-item" href="mailto:{{contact.email}}">
+				<label>Email</label>
+				<h4 class="list-group-item-heading">{{contact.email}}</h4>
+			</a>
+			{{/if}}
+		</div>
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Base Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/base-card-form"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>		
+	</div>
+
+</div>
+
+<!--list of notes-->
+{{>activities_for_contact this}}
+

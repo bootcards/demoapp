@@ -1,0 +1,83 @@
+{{!< ../layout}}
+
+<div id="activityCard">
+	
+	<div class="panel panel-default">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">Text note</h3>
+
+			<!--small screen component-->
+			<div class="btn-group pull-right visible-xs">
+				{{#if parent}}
+					{{#if parent.isContact}}
+						<a class="btn btn-primary" href="/contacts/{{parent.id}}/notes/{{note.id}}/edit" 
+							data-toggle="modal"
+							data-target="#editModal">
+					{{else}}
+						<a class="btn btn-primary" href="/notes/{{note.id}}/edit" 
+							data-toggle="modal"
+						data-target="#editModal">
+					{{/if}}
+				{{else}}
+					<a class="btn btn-primary" href="/notes/{{note.id}}/edit"	
+						data-toggle="modal"
+						data-target="#editModal">	
+				{{/if}}
+					<i class="fa fa-pencil"></i>
+					<span>Edit</span>
+				</a>
+			</div>	
+
+			<!--big screen component-->
+			{{#if parent}}
+				{{#if parent.isContact}}
+					<a class="btn btn-primary pull-right hidden-xs" href="/contacts/{{parent.id}}/notes/{{note.id}}/edit"
+						data-toggle="modal"
+						data-target="#editModal">
+				{{else}}
+					<a class="btn btn-primary pull-right hidden-xs" href="/notes/{{note.id}}/edit"
+						data-toggle="modal"
+						data-target="#editModal">
+				{{/if}}
+			{{else}}
+				<a class="btn btn-primary pull-right hidden-xs" href="/notes/{{note.id}}/edit"
+					data-toggle="modal"
+					data-target="#editModal">	
+			{{/if}}
+				<i class="fa fa-pencil"></i>
+				<span>Edit</span>
+			</a>
+
+		</div>
+		<div class="list-group">
+			{{#if note.subject}}
+			<div class="list-group-item">
+				<label>Subject</label>
+				<h4 class="list-group-item-heading">{{note.subject}}</h4>
+			</div>
+			{{/if}}
+			{{#if note.date}}
+			<div class="list-group-item">
+				<label>Date</label>
+				<h4 class="list-group-item-heading">{{{formatDate note.date}}}</h4>
+			</div>
+			{{/if}}
+			{{#if note.details}}
+			<div class="list-group-item">
+				<label>Details</label>
+				<h4 class="list-group-item-heading">{{{note.details}}}</h4>
+			</div>
+			{{/if}}
+		</div>
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Base Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/base-card-form"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>			
+	</div>
+
+</div>
+

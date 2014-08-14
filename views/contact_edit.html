@@ -1,0 +1,89 @@
+
+<form class="form-horizontal" method="POST" action="/contacts/{{contact.id}}" data-pjax="#main">
+<div class="modal-header">
+
+	{{>dialog_buttons}}
+
+	<h4 class="modal-title">
+		{{#if contact.isNew}}
+			Add Contact
+		{{else}}
+			Edit Contact
+		{{/if}}
+	</h4>		
+</div>
+<div class="modal-body">
+		<input type="hidden" name="companyId" value="{{contact.companyId}}">
+		<input type="hidden" name="_method" value="put">
+		<div class="form-group">
+			<label class="col-xs-4 control-label">First Name</label>
+			<div class="col-xs-8">
+				<input type="text" name="firstName" class="form-control" placeholder="First Name"
+				value="{{contact.firstName}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Last Name</label>
+			<div class="col-xs-8">
+				<input type="text" name="lastName" class="form-control" placeholder="Last Name"
+				value="{{contact.lastName}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Salutation</label>
+			<div class="col-xs-8">
+				<input type="text" name="salutation" class="form-control" placeholder="Salutation"
+					value="{{contact.salutation}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Title</label>
+			<div class="col-xs-8">
+				<input type="text" name="jobTitle" class="form-control" placeholder="Job Title"
+					value="{{contact.jobTitle}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Department</label>
+			<div class="col-xs-8">
+				<input type="text" name="department" class="form-control" placeholder="Department"
+					value="{{contact.department}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Phone</label>
+			<div class="col-xs-8">
+				<input type="text" name="phone" class="form-control" 
+				placeholder="Phone"
+				value="{{contact.phone}}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label">Email</label>
+			<div class="col-xs-8">
+				<input type="email" name="email" class="form-control" placeholder="Email"
+				value="{{contact.email}}">
+			</div>
+		</div>
+					
+</div>
+</form>
+
+{{#unless contact.isNew}}
+<div class="modal-footer">
+	<button class="btn btn-danger btn-block"
+		onclick="bootcards.confirmDelete('contact');">
+		<i class="fa fa-trash-o"></i>
+		Delete Contact
+	</button>		
+</div>
+{{/unless}}	
+
+<div class="modal-footer">
+	<small class="pull-left">Built with Bootcards - Form Card</small>
+	<a class="btn btn-link btn-xs pull-right"
+		href="/snippets/form-card"
+		data-toggle="modal"
+		data-target="#docsModal">
+		View Source</a>
+</div>	

@@ -1,0 +1,38 @@
+{{#if activity.isNew}}
+<form class="form-horizontal" method="POST" action="/companies/{{company.id}}/notes" data-pjax="#listDetails">
+{{else}}
+<form class="form-horizontal" method="POST" action="/companies/{{company.id}}/notes/{{activity.id}}" data-pjax="#listDetails">
+{{/if}}
+
+<div class="modal-header">
+
+	{{>dialog_buttons}}
+
+	<h3 class="modal-title">
+	{{#if activity.isNew}}
+		New Note
+	{{else}}
+		Edit Note
+	{{/if}}
+	</h3>
+
+</div>
+
+<div class="modal-body">
+
+	<input type="hidden" name="_method" value="put">
+
+	{{>activity_form activity}}
+		
+</div>
+
+</form>
+
+<div class="modal-footer">
+	<small class="pull-left">Built with Bootcards - Form Card</small>
+	<a class="btn btn-link btn-xs pull-right"
+		href="/snippets/form-card"
+		data-toggle="modal"
+		data-target="#docsModal">
+		View Source</a>
+</div>	

@@ -1,0 +1,109 @@
+<div>
+
+	<div class="panel panel-default bootcards-chart">
+		
+		<div class="panel-heading">
+			<h3 class="panel-title">Sales by product type - $m</h3>					
+		</div>
+
+		<div>
+
+			<!--bar chart-->
+			<div class="bootcards-chart-canvas" id="chartSalesProductType"></div>
+
+			<div class="panel-footer">
+				<button class="btn btn-default btn-block"
+					onClick="toggleChartData()">
+					<i class="fa fa-table"></i>
+					Show Data
+				</button>				
+			</div>
+		</div>
+		
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Chart Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/chart"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>					
+
+	</div>		
+
+	<!-- Table Card data -->
+	<div class="panel panel-default bootcards-table" style="display:none">
+		<div class="panel-heading">
+			<h3 class="panel-title">Sales by product type - $m</h3>							
+		</div>	
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>				
+					<tr class="active"><th></th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>Stingray</td><td>4.3</td><td>6.5</td><td>10.2</td><td>5.9</td><td>26.9</td></tr>
+					<tr><td>Barracuda</td><td>15.1</td><td>25.5</td><td>35.7</td><td>20.3</td><td>96.6</td></tr>
+					<tr><td>Mako</td><td>5.9</td><td>13.7</td><td>20.6</td><td>10.5</td><td>50.7</td></tr>
+					<tr><td>Sailfish</td><td>2.1</td><td>5</td><td>9.6</td><td>14.4</td><td>31.1</td></tr>
+					<tr><td><strong>Total</strong></td><td><strong>27.4</strong></td><td><strong>50.7</strong></td><td><strong>76.1</strong></td><td><strong>51.1</strong></td><td><strong>205.3</strong></td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-default btn-block" onClick="toggleChartData()">
+				<i class="fa fa-bar-chart-o"></i>
+				Show Chart
+			</button>				
+		</div>	
+		<div class="panel-footer">
+			<small class="pull-left">Built with Bootcards - Table Card</small>
+			<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/table"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+		</div>												
+	</div>	
+
+</div>
+
+<script type="text/javascript">
+
+/*
+ * Clear the target DOM element and draw the sample charts
+ * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
+ */
+var drawChartSalesProductType = function() {
+
+	$("#chartSalesProductType").empty();
+
+	var sales = [
+       {"period": "2014 Q1", "stingray": 4.3, "barracuda": 15.1, "mako" : 5.9, "sailfish": 2.1 },
+       {"period": "2014 Q2", "stingray": 6.5, "barracuda": 25.5, "mako" : 13.7, "sailfish": 5 },
+       {"period": "2014 Q3", "stingray": 10.2, "barracuda": 35.7, "mako" : 20.6, "sailfish": 9.6 },
+       {"period": "2014 Q4", "stingray": 5.9, "barracuda": 20.3, "mako" : 10.5, "sailfish": 14.4 }
+  ];
+  Morris.Line({
+    element: 'chartSalesProductType',
+    data: sales,
+    xkey: 'period',
+    ykeys: ['stingray', 'barracuda', 'mako', 'sailfish'],
+    labels: ['Stingray', 'Barracuda', 'Mako', 'Sailfish']
+  });
+
+
+}
+
+//draw the charts when the DOM is ready
+$(document).ready( function() {
+	drawChartSalesProductType();
+});
+
+//on resize of the page: redraw the charts
+$(window)
+	.on('resize', function() {
+		drawChartSalesProductType();
+	});
+
+</script>

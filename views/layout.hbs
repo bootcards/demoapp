@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <!--<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">-->
+
+  {{#if session.isIos}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!--android-->
+  {{else}}
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  {{/if}}
+	<!-- Icons -->  
+  <link rel="shortcut icon" sizes="196x196" href="/bootcards-demo-app/images/apple-touch-icon-144x144.png">
+  <link rel="shortcut icon" sizes="128x128" href="/bootcards-demo-app/images/apple-touch-icon-120x120.png">
+	<!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+	<link rel="apple-touch-icon" sizes="120x120" href="/bootcards-demo-app/images/apple-touch-icon-120x120.png">
+	<!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+	<link rel="apple-touch-icon" sizes="144x144" href="/bootcards-demo-app/images/apple-touch-icon-144x144.png">
+
+	<!-- Splash Screen Images -->
+    <!-- iOS 6 & 7 iPad (retina, portrait) -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-768x1004@2x.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 & 7 iPad (retina, landscape) -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-1024x748@2x.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 iPad (portrait) -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-1024x748.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 iPad (landscape) -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-768x1004.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 & 7 iPhone 5 -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-320x548@2x.png"
+          media="(device-width: 320px) and (device-height: 568px)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 & 7 iPhone (retina) -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-320x460@2x.png"
+          media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iOS 6 iPhone -->
+    <link href="/bootcards-demo-app/images/bootcards-splash-320x460.png"
+          media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">	
+
+
+  <title>Customers</title>
+  <!-- version: {{getAppVersion}} -->
+    <!-- Load the required CSS libraries -->
+  <!-- This is a merged file created by a local Grunt task to cut down the # of HTTP requests -->
+  <link href="/bootcards-demo-app/bclibs.css" rel="stylesheet" />
+  <!-- FontAwesome -->	
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
+  
+  <!-- Bootcards CSS file (different for desktop, iOS and Android) -->
+  {{{getCSSforOS session}}}
+  <!-- Custom CSS for the demo app -->
+  <link href="/bootcards-demo-app/css/bootcards-demo-app.css" rel="stylesheet" />
+  
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+</head>
+</body>
+
+<!-- slide in menu (mobile) -->
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas" id="slideInMenu">
+  <ul class="nav navmenu-nav">
+    {{#each menu}}
+    {{#if this.active }}
+    <li class="active">
+    {{else}}
+    <li>
+    {{/if}}
+      <a href="{{this.url}}" data-pjax="#main" data-title="{{this.title}}">
+        <i class="fa fa-lg {{this.icon}}"></i>
+        {{this.name}}
+      </a>          
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+  <!-- fixed top navbar -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <button type="button" class="btn btn-default btn-back pull-left hidden" onclick="history.back()">
+        <i class="fa fa-lg fa-chevron-left"></i>
+        <span>Back</span>
+      </button>
+      <!-- menu button to show/ hide the slider -->
+      <button type="button" class="btn btn-default btn-menu pull-left offcanvas-toggle">
+        <i class="fa fa-lg fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <a class="navbar-brand" title="Customers v{{getAppVersion}}" href="/">Customers</a>         
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{#each menu}}
+          {{#if this.active }}
+          <li class="active">
+          {{else}}
+          <li>
+          {{/if}}
+            <a href="{{this.url}}" data-pjax="#main" data-title="{{this.title}}"
+              <i class="fa {{this.icon}}"></i>
+              {{this.name}}
+            </a>          
+          </li>
+          {{/each}}
+        </ul>
+      </div>          
+    </div>
+  </div>    
+
+      <div class="container" id="main">
+       {{{body}}}
+     </div>
+
+	<!-- fixed tabbed footer -->
+	<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<div class="bootcards-desktop-footer clearfix">
+				<p class="pull-left">Bootcards version 0.1</p>
+			</div>
+			<div class="btn-group">
+				{{#each menu}}
+				{{#if this.active }}
+				<a href="{{this.url}}" class="btn btn-default active" data-pjax="#main" data-title="{{this.title}}">
+				{{else}}
+				<a href="{{this.url}}" class="btn btn-default" data-pjax="#main" data-title="{{this.title}}">
+				{{/if}}
+					<i class="fa fa-2x {{this.icon}}"></i>
+					{{this.name}}
+				</a>          
+				{{/each}}
+			</div>
+		</div>
+	</div> 
+
+
+  <!-- Load the required JavaScript libraries -->
+  <!-- This is a merged file created by a local Grunt task to cut down the # of HTTP requests -->
+  <script src="/bootcards-demo-app/bclibs.js"></script> 
+  <script src="/bower_components/bootcards/dist/js/bootcards.min.js"></script> 
+  <script src="/bootcards-demo-app/js/bootcards-demo-app.js"></script> 
+
+	<!--modals-->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+  <div class="modal fade" id="docsModal" tabindex="-1" role="dialog" aria-labelledby="docsModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+    //highlight first list group option (if non active yet)
+    if ( $('.list-group a.active').length == 0 ) {
+      $('.list-group a').first().addClass('active');
+    }
+
+    {{#if session.isIos}}
+    bootcards.disableRubberBanding();
+
+    //fix for minimal-ui bug in Safari:
+    //http://stackoverflow.com/questions/22391157/gray-area-visible-when-switching-from-portrait-to-landscape-using-ios-7-1-minima
+    if (bootcards.isXS() ) {
+      window.addEventListener("orientationchange", function() {
+        window.scrollTo(0,0);
+      }, false);
+
+      //initial redraw - needed to fix an issue with the minimal-ui and foot location
+      //when the page if first opened 
+      window.scrollTo(0,0);
+    }
+    {{/if}}
+  </script>
+
+</body>
+</html>
