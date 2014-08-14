@@ -38,16 +38,16 @@
 		</div>	
 		<table class="table table-hover">
 			<thead>				
-				<tr class="active"><th>Name</th><th>Sales value</th></tr>
+				<tr class="active"><th>Name</th><th class="text-right">Sales value</th></tr>
 			</thead>
 			<tbody>
-				<tr><td>Guy Bardsley</td><td>550</td></tr>
-				<tr><td>Adam Callahan</td><td>1500</td></tr>
-				<tr><td>Arlo Geist</td><td>3750</td></tr>
-				<tr><td>Sheila Hutchins</td><td>3500</td></tr>
-				<tr><td>Jeanette Quijano</td><td>1250</td></tr>
-				<tr><td>Simon Sweet</td><td>5250</td></tr>
-				<tr><td><strong>Total</strong></td><td><strong>15800</strong></td></tr>
+				<tr><td>Guy Bardsley</td><td class="text-right">$ 550</td></tr>
+				<tr><td>Adam Callahan</td><td class="text-right">$ 1,500</td></tr>
+				<tr><td>Arlo Geist</td><td class="text-right">$ 3,750</td></tr>
+				<tr><td>Sheila Hutchins</td><td class="text-right">$ 3,500</td></tr>
+				<tr><td>Jeanette Quijano</td><td class="text-right">$ 1,250</td></tr>
+				<tr><td>Simon Sweet</td><td class="text-right">$ 5,250</td></tr>
+				<tr><td><strong>Total</strong></td><td class="text-right"><strong>$ 15,800</strong></td></tr>
 			</tbody>
 		</table>
 		<div class="panel-footer">
@@ -88,10 +88,22 @@ var drawChartClosedSales = function() {
 	      {label: 'Jeanette Quijano', value: 1250 },
 	      {label: 'Simon Sweet', value: 5250 }
 	    ],
-	    formatter: function (y) { return y }
+	    formatter: function (y, data) { 
+	    	//prefixes the values by an $ sign, adds thousands seperators
+
+			nStr = y + '';
+			x = nStr.split('.');
+			x1 = x[0];
+			x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + ',' + '$2');
+			}
+			return '$ ' + x1 + x2;
+	    }
 	  });
 
-}
+};
 
 //draw the charts when the DOM is ready
 $(document).ready( function() {
