@@ -119,14 +119,19 @@ $(document).ready( function() {
 		//use pjax to submit forms
   		$.pjax.submit(event);
 	})
+	.on('pjax:start', function(event) {
+
+		//hide the offcanvas menu
+		$("#offCanvasMenu").removeClass("active");
+		$("#main").removeClass("active");
+
+	})
 	.on('pjax:end', function(event) {
 
 		var $tgt = $(event.target);
 
 		if ( bootcards.isXS() ) {
 			//function only performed on small screens (smartphones)
-
-			var $tgt = $(event.target);
 
 			//we only use the list column
 			var details = $('#listDetails');
@@ -186,7 +191,7 @@ $(document).ready( function() {
 		bootcards.addPJaxHandlers(pjaxTarget);
 
 		//highlight first list group option (if non active yet)
-		if ( $('.list-group a.active').length == 0 ) {
+		if ( $('.list-group a.active').length === 0 ) {
 			$('.list-group a').first().addClass('active');
 		}
 
@@ -194,12 +199,6 @@ $(document).ready( function() {
 	.on('pjax:complete', function(event) {
 		//called after a pjax content update
 		
-		var $tgt = $(event.target);
-
-
-		//hide the offcanvas slider
-		$("#slideInMenu").offcanvas('hide');
-
 		//check for any modals to close
 		var modal = $(event.relatedTarget).closest('.modal');
 		if (modal.length) {
@@ -208,16 +207,15 @@ $(document).ready( function() {
 
 	});
 
-	//enable the Bootstrap Jasny slide in menu
-    $('#slideInMenu').offcanvas({
-        toggle : false
-    });
-    $('.offcanvas-toggle').on('click', function() {
-        $('#slideInMenu').offcanvas('toggle');
-    })
+	//activate the menu button: set classes that slide the off canvas menu in
+	$(".offCanvasToggle").click(function(){
+	      $("#offCanvasMenu").toggleClass("active");
+	      $("#main").toggleClass("active");
+	});
+
 });
 
-//show a confirmation dialog before NOT deleting an item: this is a demp app after all...
+//show a confirmation dialog before NOT deleting an item: this is a demo app after all...
 bootcards.confirmDelete = function(type) {
 
 	if ( confirm('Are you sure you want to delete this '  + type + '?') ) {
@@ -226,7 +224,7 @@ bootcards.confirmDelete = function(type) {
 			modal.modal('hide');
 		}
 	}
-}
+};
 
 /*
  * Enable FTLabs' FastClick

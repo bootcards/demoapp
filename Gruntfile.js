@@ -13,7 +13,6 @@ module.exports = function(grunt) {
          'public/jqueryui/jquery-ui-1.10.4.custom.min.js',
          'public/bower_components/jquery-pjax/jquery.pjax.js',
          'public/bower_components/fastclick/lib/fastclick.js',
-         'public/bower_components/bootstrap-jasny/dist/js/jasny-bootstrap.min.js',
          'public/bower_components/raphael/raphael-min.js',
          'public/bower_components/morris.js/morris.min.js',
 
@@ -44,7 +43,6 @@ module.exports = function(grunt) {
         options: { banner: '<%= banner %>' },
           src: [
          'public/bower_components/bootstrap/dist/css/bootstrap.min.css',
-         'public/bower_components/bootstrap-jasny/dist/css/jasny-bootstrap.min.css',
         'public/bower_components/morris.js/morris.css'
 
         ],

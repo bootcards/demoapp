@@ -70,12 +70,13 @@
           rel="apple-touch-startup-image">	
 
 
-  <title>Customers</title>
+  <title>Customers </title>
   <!-- version: {{getAppVersion}} -->
-    <!-- Load the required CSS libraries -->
-  <!-- This is a merged file created by a local Grunt task to cut down the # of HTTP requests -->
-  <link href="/bootcards-demo-app/bclibs.css" rel="stylesheet" />
-  <!-- FontAwesome -->	
+  
+  <!-- Load the required CSS libraries -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/bower_components/morris.js/morris.css" rel="stylesheet" />
+	
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
   
   <!-- Bootcards CSS file (different for desktop, iOS and Android) -->
@@ -93,24 +94,6 @@
 </head>
 </body>
 
-<!-- slide in menu (mobile) -->
-<div class="navmenu navmenu-default navmenu-fixed-left offcanvas" id="slideInMenu">
-  <ul class="nav navmenu-nav">
-    {{#each menu}}
-    {{#if this.active }}
-    <li class="active">
-    {{else}}
-    <li>
-    {{/if}}
-      <a href="{{this.url}}" data-pjax="#main" data-title="{{this.title}}">
-        <i class="fa fa-lg {{this.icon}}"></i>
-        {{this.name}}
-      </a>          
-    </li>
-    {{/each}}
-  </ul>
-</div>
-
   <!-- fixed top navbar -->
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -127,7 +110,7 @@
         <span>Back</span>
       </button>
       <!-- menu button to show/ hide the slider -->
-      <button type="button" class="btn btn-default btn-menu pull-left offcanvas-toggle">
+      <button type="button" class="btn btn-default btn-menu pull-left offCanvasToggle">
         <i class="fa fa-lg fa-bars"></i>
         <span>Menu</span>
       </button>
@@ -149,11 +132,29 @@
         </ul>
       </div>          
     </div>
-  </div>    
+  </div>   
 
-      <div class="container" id="main">
-       {{{body}}}
-     </div>
+  <!-- slide in menu (mobile only) -->
+  <nav id="offCanvasMenu" class="navmenu">
+    <ul class="nav">
+      {{#each menu}}
+      {{#if this.active }}
+      <li class="active">
+      {{else}}
+      <li>
+      {{/if}}
+        <a href="{{this.url}}" data-pjax="#main" data-title="{{this.title}}">
+          <i class="fa fa-lg {{this.icon}}"></i>
+          {{this.name}}
+        </a>          
+      </li>
+      {{/each}}
+    </ul>
+  </nav>
+
+  <div class="container" id="main">
+    {{{body}}}
+  </div>
 
 	<!-- fixed tabbed footer -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
