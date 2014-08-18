@@ -208,9 +208,19 @@ $(document).ready( function() {
 	});
 
 	//activate the menu button: set classes that slide the off canvas menu in
-	$(".offCanvasToggle").click(function(){
+	$(".offCanvasToggle").on("click", function() {
 	      $("#offCanvasMenu").toggleClass("active");
 	      $("#main").toggleClass("active");
+	});
+
+	//hide the offcanvas if you click on the body
+	$("#main").on("click", function() {
+		var $this = $(this);
+		if ($this.hasClass('active') ) {
+			$this.removeClass('active');
+			$("#offCanvasMenu").removeClass('active');
+		}
+
 	});
 
 });
