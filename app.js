@@ -97,22 +97,24 @@ hbs.registerHelper('count', function(type) {
 
 //helper to get the stylesheet for the current user agent
 hbs.registerHelper("getCSSforOS", function(session) {
+	//var bootCardsBase = "/bower_components/bootcards/";
+	var bootCardsBase = "/bootcards-latest/";
 	if (session.isDev) {
-		var baseCSS = '<!-- hum: '  + session.test + '--><link href="/bower_components/bootcards/src/css/bootcards.css" rel="stylesheet" type="text/css" />';
+		var baseCSS = '<link href="' + bootCardsBase + 'src/css/bootcards.css" rel="stylesheet" type="text/css" />';
 		if (session.isAndroid) {
-			return baseCSS + '<link href="/bower_components/bootcards/src/css/bootcards-android.css" rel="stylesheet" type="text/css" />';
+			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-android.css" rel="stylesheet" type="text/css" />';
 		} else if (session.isIos) {
-			return baseCSS + '<link href="/bower_components/bootcards/src/css/bootcards-ios.css" rel="stylesheet" type="text/css" />';
+			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-ios.css" rel="stylesheet" type="text/css" />';
 		} else {
-			return baseCSS + '<link href="/bower_components/bootcards/src/css/bootcards-desktop.css" rel="stylesheet" type="text/css" />';
+			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-desktop.css" rel="stylesheet" type="text/css" />';
 		}
 	} else {
 		if (session.isAndroid) {
-			return '<!-- hum: '  + session.test + '--><link href="/bower_components/bootcards/dist/css/bootcards-android.min.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-android.min.css" rel="stylesheet" type="text/css" />';
 		} else if (session.isIos) {
-			return '<!-- hum: '  + session.test + '--><link href="/bower_components/bootcards/dist/css/bootcards-ios.min.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-ios.min.css" rel="stylesheet" type="text/css" />';
 		} else {
-			return '<!-- hum: '  + session.test + '--><link href="/bower_components/bootcards/dist/css/bootcards-desktop.min.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-desktop.min.css" rel="stylesheet" type="text/css" />';
 		}	
 	}
 });
