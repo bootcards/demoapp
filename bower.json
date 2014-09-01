@@ -13,7 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootcards": ">=0.1.0",
+    "bootcards": ">=0.2.0",
     "jquery": "~2.1.0",
     "jquery.ui": "*",
     "bootstrap": "~3.2.0",
@@ -21,8 +21,5 @@
     "jquery-pjax": "~1.8.1",
     "fastclick": "~1.0.0",
     "morris.js": "~0.5.1"
-  },
-  "resolutions": {
-    "bootstrap": ">= 3.1.0"
   }
 }

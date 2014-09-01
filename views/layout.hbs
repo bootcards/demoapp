@@ -75,8 +75,8 @@
   
   <!-- Load the required CSS libraries -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/bower_components/morris.js/morris.css" rel="stylesheet" />
-	
+  <link href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.css" rel="stylesheet" />
+
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
   
   <!-- Bootcards CSS file (different for desktop, iOS and Android) -->
@@ -109,8 +109,8 @@
         <i class="fa fa-lg fa-chevron-left"></i>
         <span>Back</span>
       </button>
-      <!-- menu button to show/ hide the slider -->
-      <button type="button" class="btn btn-default btn-menu pull-left offCanvasToggle">
+      <!-- menu button to show/ hide the off canvas slider -->
+      <button type="button" class="btn btn-default btn-menu pull-left offCanvasToggle" data-toggle="offcanvas">
         <i class="fa fa-lg fa-bars"></i>
         <span>Menu</span>
       </button>
@@ -135,7 +135,7 @@
   </div>   
 
   <!-- slide in menu (mobile only) -->
-  <nav id="offCanvasMenu" class="navmenu">
+  <nav id="offCanvasMenu" class="navmenu offcanvas offcanvas-left">
     <ul class="nav">
       {{#each menu}}
       {{#if this.active }}
@@ -152,7 +152,7 @@
     </ul>
   </nav>
 
-  <div class="container" id="main">
+  <div class="container bootcards-container" id="main">
     {{{body}}}
   </div>
 
@@ -179,8 +179,17 @@
 
 
   <!-- Load the required JavaScript libraries -->
-  <!-- This is a merged file created by a local Grunt task to cut down the # of HTTP requests -->
-  <script src="/bootcards-demo-app/bclibs.js"></script> 
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.2/jquery.pjax.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.2/fastclick.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+  
+
   <script src="/bower_components/bootcards/dist/js/bootcards.min.js"></script> 
   <script src="/bootcards-demo-app/js/bootcards-demo-app.js"></script> 
 
@@ -198,13 +207,18 @@
   
   <script type="text/javascript">
     //highlight first list group option (if non active yet)
-    if ( $('.list-group a.active').length == 0 ) {
+    if ( $('.list-group a.active').length === 0 ) {
       $('.list-group a').first().addClass('active');
     }
 
-    {{#if session.isIos}}
-    bootcards.disableRubberBanding();
+    bootcards.init( {
+        offCanvasHideOnMainClick : true,
+        enableTabletPortraitMode : true,
+        disableRubberBanding : true 
+      });
 
+    {{#if session.isIos}}
+    
     //fix for minimal-ui bug in Safari:
     //http://stackoverflow.com/questions/22391157/gray-area-visible-when-switching-from-portrait-to-landscape-using-ios-7-1-minima
     if (bootcards.isXS() ) {

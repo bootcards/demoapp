@@ -97,8 +97,7 @@ hbs.registerHelper('count', function(type) {
 
 //helper to get the stylesheet for the current user agent
 hbs.registerHelper("getCSSforOS", function(session) {
-	//var bootCardsBase = "/bower_components/bootcards/";
-	var bootCardsBase = "/bootcards-latest/";
+	var bootCardsBase = "/bower_components/bootcards/";
 	if (session.isDev) {
 		var baseCSS = '<link href="' + bootCardsBase + 'src/css/bootcards.css" rel="stylesheet" type="text/css" />';
 		if (session.isAndroid) {

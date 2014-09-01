@@ -129,6 +129,7 @@ $(document).ready( function() {
 	.on('pjax:end', function(event) {
 
 		var $tgt = $(event.target);
+		var tgtId = $tgt.attr('id');
 
 		if ( bootcards.isXS() ) {
 			//function only performed on small screens (smartphones)
@@ -140,8 +141,6 @@ $(document).ready( function() {
 			}
 
 			//change class on container elements (list>card and vice versa)
-			var tgtId = $tgt.attr('id');
-
 			if ( tgtId == 'main') {
 
 				$('#list')
@@ -195,6 +194,27 @@ $(document).ready( function() {
 			$('.list-group a').first().addClass('active');
 		}
 
+		//enable single pane portrait mode
+		if ( tgtId == 'main') {
+
+			//do some cleaning up first
+            if (bootcards.listOffcanvasToggle) {
+                bootcards.listOffcanvasToggle.remove();
+                bootcards.listTitleEl.remove();
+                bootcards.offCanvasMenuTitleEl.remove();
+            }
+            bootcards.listOffcanvasToggle = null;
+            bootcards.listTitleEl = null;
+            bootcards.offCanvasMenuTitleEl = null;
+            bootcards.listEl = null;
+            bootcards.cardsEl = null;
+
+			bootcards._setOrientation(true);
+
+			bootcards.listTitleEl.find('button').show();
+               
+		}
+
 	})
 	.on('pjax:complete', function(event) {
 		//called after a pjax content update
@@ -203,22 +223,6 @@ $(document).ready( function() {
 		var modal = $(event.relatedTarget).closest('.modal');
 		if (modal.length) {
 			modal.modal('hide');
-		}
-
-	});
-
-	//activate the menu button: set classes that slide the off canvas menu in
-	$(".offCanvasToggle").on("click", function() {
-	      $("#offCanvasMenu").toggleClass("active");
-	      $("#main").toggleClass("active");
-	});
-
-	//hide the offcanvas if you click on the body
-	$("#main").on("click", function() {
-		var $this = $(this);
-		if ($this.hasClass('active') ) {
-			$this.removeClass('active');
-			$("#offCanvasMenu").removeClass('active');
 		}
 
 	});
