@@ -246,7 +246,7 @@ bootcards._setOrientation = function(init) {
         $('.bootcards-az-picker').hide();
 
         //in simple mode, we only hide the list column and show the content in full width
-        if ( !bootcards._simplePortraitMode) {
+        if ( bootcards._simplePortraitMode) {
             return; //we're done here
         }
 
