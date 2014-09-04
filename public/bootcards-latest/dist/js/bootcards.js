@@ -192,49 +192,20 @@ bootcards._setOrientation = function(init) {
     if (!init) {
         if (bootcards.offCanvasMenuEl) { bootcards.offCanvasMenuEl.removeClass("active"); }
     }
+
+    bootcards._initListEl();
+    bootcards._initCardsEl();
  
     if (isPortrait) {
 
         //get the columns classes for the list and details
-        if (!bootcards.listEl) {
-            
-            bootcards.listEl = $('.bootcards-list');
-
-            if ( bootcards.listEl.length === 0 ) {
-                //no list found: show the menu button and abort
-                if (bootcards.offCanvasToggleEl) {
-                    bootcards.offCanvasToggleEl.show();
-                }
-                return; 
-            }
-
-            bootcards.listColClass = '';
-            bootcards.listTitle = bootcards.listEl.data('title') || 'List';
-
-            $.each(bootcards.listEl.prop('class').split(' '), function(idx, value) {
-                if (value.indexOf('col')===0) {
-                    bootcards.listColClass += value + ' ';
-                }
-            });
-
+        if (bootcards.listEl.length === 0) {
+            return;
         }
 
         //immediately hide the list on load in portrait mode
         if (init) {
             bootcards.listEl.hide();
-        }
-
-        if (!bootcards.cardsEl) {
-
-            bootcards.cardsEl = $('.bootcards-cards');
-            bootcards.cardsColClass = '';
-
-            $.each(bootcards.cardsEl.prop('class').split(' '), function(idx, value) {
-                if (value.indexOf('col')===0) {
-                    bootcards.cardsColClass += value + ' ';
-                }
-            });
-
         }
 
         //set the column to full width
@@ -380,6 +351,50 @@ bootcards._setOrientation = function(init) {
 
         $('.bootcards-az-picker').show();
 
+    }
+
+};
+
+//get the list element and it's classes
+bootcards._initListEl = function() {
+
+    if (bootcards.listEl != null) {
+        return bootcards.listEl;
+    }
+            
+    bootcards.listEl = $('.bootcards-list');
+    bootcards.listColClass = '';
+
+    if ( bootcards.listEl.length > 0 ) {
+            
+        bootcards.listTitle = bootcards.listEl.data('title') || 'List';
+
+        $.each(bootcards.listEl.prop('class').split(' '), function(idx, value) {
+            if (value.indexOf('col')===0) {
+                bootcards.listColClass += value + ' ';
+            }
+        });
+
+    }
+
+};
+
+bootcards._initCardsEl = function() {
+
+    if (bootcards.cardsEl != null) {
+        return bootcards.cardsEl;
+    }
+
+    bootcards.cardsEl = $('.bootcards-cards');
+    bootcards.cardsColClass = '';
+
+    if ( bootcards.cardsEl.length > 0 ) {
+
+        $.each(bootcards.cardsEl.prop('class').split(' '), function(idx, value) {
+            if (value.indexOf('col')===0) {
+                bootcards.cardsColClass += value + ' ';
+            }
+        });
     }
 
 };
