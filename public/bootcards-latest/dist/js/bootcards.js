@@ -357,16 +357,24 @@ bootcards._setOrientation = function(init) {
 
         //hide the button to show the list, remove the list & title
         if ( bootcards.listOffcanvasToggle ) {
+
             bootcards.listOffcanvasToggle.hide();
             bootcards.listTitleEl.removeClass("active");
 
-            bootcards.listEl
-                .removeClass('offcanvas-list active')
-                .addClass(bootcards.listColClass);
+        }
 
+        if (bootcards.listEl) {
+
+           bootcards.listEl
+                .removeClass('offcanvas-list active')
+                .addClass(bootcards.listColClass); 
+                
+        }
+
+        if (bootcards.cardsEl) {
             bootcards.cardsEl
                 .removeClass('col-xs-12')
-                .addClass( bootcards.cardsColClass );
+                .addClass( bootcards.cardsColClass ); 
         }
 
         $('.bootcards-az-picker').show();
