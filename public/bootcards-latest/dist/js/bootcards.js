@@ -191,6 +191,7 @@ bootcards._setOrientation = function(init) {
 
     if (!init) {
         if (bootcards.offCanvasMenuEl) { bootcards.offCanvasMenuEl.removeClass("active"); }
+        if (bootcards.offCanvasMenuTitleEl) { bootcards.offCanvasMenuTitleEl.removeClass("active"); }
     }
 
     bootcards._initListEl();
