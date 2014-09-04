@@ -5,7 +5,7 @@
 var express = require('express');
 
 //routes
-var company 	= require('./routes/company')
+var company 	= require('./routes/company');
 var contact 	= require('./routes/contact');
 var note 		= require('./routes/note');
 var media 		= require('./routes/media');
@@ -99,13 +99,13 @@ hbs.registerHelper('count', function(type) {
 hbs.registerHelper("getCSSforOS", function(session) {
 	var bootCardsBase = "/bower_components/bootcards/";
 	if (session.isDev) {
-		var baseCSS = '<link href="' + bootCardsBase + 'src/css/bootcards.css" rel="stylesheet" type="text/css" />';
+		bootCardsBase = "/bootcards-latest/";
 		if (session.isAndroid) {
-			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-android.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-android.css" rel="stylesheet" type="text/css" />';
 		} else if (session.isIos) {
-			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-ios.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-ios.css" rel="stylesheet" type="text/css" />';
 		} else {
-			return baseCSS + '<link href="' + bootCardsBase + 'src/css/bootcards-desktop.css" rel="stylesheet" type="text/css" />';
+			return '<link href="' + bootCardsBase + 'dist/css/bootcards-desktop.css" rel="stylesheet" type="text/css" />';
 		}
 	} else {
 		if (session.isAndroid) {
