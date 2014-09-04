@@ -184,8 +184,12 @@ bootcards._setOrientation = function(init) {
  
     if (isPortrait) {
 
-        //get the columns classes for the list and details
+        //no list found
         if (bootcards.listEl.length === 0) {
+            //no list found (anymore), enable the off canvas toggle (might have been hidden) and abort
+            if (bootcards.offCanvasToggleEl) {
+                bootcards.offCanvasToggleEl.show();
+            }
             return;
         }
 
