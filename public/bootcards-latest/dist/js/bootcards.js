@@ -164,7 +164,6 @@ bootcards._initTabletPortraitMode = function() {
             setTimeout( function() { 
                 bootcards._setOrientation(false);
             } , 150);
-            event.stopPropagation();
         } )
         .on( 'load', bootcards._setOrientation(true) );
 
