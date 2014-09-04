@@ -176,10 +176,11 @@ bootcards._initTabletPortraitMode = function() {
 
     $(window)
         .on( 'resize', function() { 
-            setTimeout( function() { 
-                bootcards._setOrientation(false);
-            } , 150);
-            event.stopPropagation();
+            bootcards._setOrientation(false);
+            //setTimeout( function() { 
+            //    bootcards._setOrientation(false);
+            ///} , 150);
+            //event.stopPropagation();
         } )
         .on( 'load', bootcards._setOrientation(true) );
 
