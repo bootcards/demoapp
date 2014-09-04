@@ -870,10 +870,6 @@ body {
 	background: #efeff4;
 }
 
-body.fullscreen {
-	padding-top: 64px;
-}
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
@@ -902,11 +898,6 @@ html, body {
 	background: rgba(247,247,247,.98);
 	height: 45px;
 	text-align: center;
-}
-
-.fullscreen .offcanvas-list-title {
-	line-height: 64px;
-	height: 65px;
 }
 
 .navbar-fixed-top .offcanvas-list-title > .btn,
@@ -990,12 +981,6 @@ html, body {
 	box-shadow: 0 0 1px rgba(0,0,0,.85);
 }
 
-.fullscreen .navbar-fixed-top {
-	height: 64px;
-	min-height: 64px;
-	padding-top: 20px;
-}
-
 .navbar-header {
 	float: none;
 }
@@ -1052,10 +1037,6 @@ html, body {
 
 .offcanvas {
   margin-top:45px;
-}
-
-.fullscreen .offcanvas {
-	margin-top:65px;
 }
 
 

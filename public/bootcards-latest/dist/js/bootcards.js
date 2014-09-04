@@ -4,8 +4,6 @@ var bootcards = bootcards || {
     offCanvasMenuEl : null,
     mainContentEl : null,
     _isXS : null,
-    _isIOS : false,
-    _isFullScreen : false,
     _simplePortraitMode : false
 
 };
@@ -14,19 +12,6 @@ var bootcards = bootcards || {
 bootcards.init = function( options ) {
 
     $(document).ready( function() {
-
-        //detect full screen mode on iOS
-        if (
-            ("standalone" in window.navigator) &&
-            window.navigator.standalone
-            ) {
-
-                bootcards._isIOS = true;
-                bootcards._isFullScreen = true;
-         
-                $("body").addClass("ios fullscreen");
-        
-        }
 
         //initialize the off canvas menu
         bootcards._initOffCanvasMenu(
