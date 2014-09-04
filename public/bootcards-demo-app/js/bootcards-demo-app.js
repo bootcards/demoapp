@@ -194,7 +194,7 @@ $(document).ready( function() {
 			$('.list-group a').first().addClass('active');
 		}
 
-		//enable single pane portrait mode
+		//enable single pane portrait mode when loading content with pjax
 		if ( tgtId == 'main') {
 
 			//do some cleaning up first
@@ -211,7 +211,9 @@ $(document).ready( function() {
 
 			bootcards._setOrientation(true);
 
-			bootcards.listTitleEl.find('button').show();
+			if (bootcards.listTitleEl) {
+				bootcards.listTitleEl.find('button').show();
+			}
                
 		}
 

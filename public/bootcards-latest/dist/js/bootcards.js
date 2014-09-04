@@ -246,8 +246,11 @@ bootcards._setOrientation = function(init) {
         $('.bootcards-az-picker').hide();
 
         //in simple mode, we only hide the list column and show the content in full width
-        if ( bootcards._simplePortraitMode) {
-            return; //we're done here
+        if ( bootcards._simplePortraitMode ) {
+            bootcards.listEl
+                .hide()
+                .removeClass(bootcards.listColClass);
+            return; //we're done
         }
 
         if (!bootcards.listOffcanvasToggle) {
@@ -355,26 +358,24 @@ bootcards._setOrientation = function(init) {
             bootcards.offCanvasToggleEl.show();
         }
 
+        //show the list again
+        if (bootcards.listEl) {
+            bootcards.listEl
+                .removeClass('offcanvas-list active')
+                .addClass(bootcards.listColClass)
+                .show();
+        }
+
         //hide the button to show the list, remove the list & title
         if ( bootcards.listOffcanvasToggle ) {
-
             bootcards.listOffcanvasToggle.hide();
             bootcards.listTitleEl.removeClass("active");
-
         }
 
-        if (bootcards.listEl) {
-
-           bootcards.listEl
-                .removeClass('offcanvas-list active')
-                .addClass(bootcards.listColClass); 
-                
-        }
-
-        if (bootcards.cardsEl) {
+        if (bootcards.cardsEl) {   
             bootcards.cardsEl
                 .removeClass('col-xs-12')
-                .addClass( bootcards.cardsColClass ); 
+                .addClass( bootcards.cardsColClass );
         }
 
         $('.bootcards-az-picker').show();
