@@ -38,10 +38,12 @@ bootcards.init = function( options ) {
 
     } );
 
-    if ( options.disableBreakoutSelector ) {
+    if ('standalone' in navigator && 
+        navigator.standalone && 
+        options.disableBreakoutSelector ) {
 
         /*
-         * If an app is added to the home screen and a standard (non ajax)
+         * If an app on iOS is added to the home screen and a standard (non ajax)
          * link is clicked, it tends to break-out out of full-screen mode
          * This code helps to prevent that.
          * 
