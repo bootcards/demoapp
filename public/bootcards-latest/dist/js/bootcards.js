@@ -38,6 +38,28 @@ bootcards.init = function( options ) {
 
     } );
 
+    if ( options.disableBreakoutSelector ) {
+
+        /*
+         * If an app is added to the home screen and a standard (non ajax)
+         * link is clicked, it tends to break-out out of full-screen mode
+         * This code helps to prevent that.
+         * 
+         * To use: add the break-out class to the options object used to initializ
+         * Bootcards and add the same class to any link you want to trigger this
+         * behaviour on (normally: all non-ajax links)
+         */
+        $(document).on(
+            "click",
+            options.disableBreakoutSelector,
+            function( event ){
+                event.preventDefault();
+                location.href = $(event.target).prop("href");
+            }
+        );
+
+    }
+
 
 };
 
