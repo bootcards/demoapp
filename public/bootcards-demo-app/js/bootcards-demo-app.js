@@ -214,6 +214,15 @@ $(document).ready( function() {
 			if (bootcards.listTitleEl) {
 				bootcards.listTitleEl.find('button').show();
 			}
+
+			//add the resize event again
+			$(window)
+				.off()
+		        .on( 'resize', function() { 
+		        	setTimeout( function() {
+		                bootcards._setOrientation(false);
+		            } , 150);
+		        } );
                
 		}
 
