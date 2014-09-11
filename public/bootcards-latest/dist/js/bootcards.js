@@ -42,6 +42,8 @@ bootcards.init = function( options ) {
         navigator.standalone && 
         options.disableBreakoutSelector ) {
 
+        alert('nu');
+
         /*
          * If an app on iOS is added to the home screen and a standard (non ajax)
          * link is clicked, it tends to break-out out of full-screen mode
@@ -296,9 +298,6 @@ bootcards._setOrientation = function(init) {
                 $this.removeClass('active');
                 bootcards.listTitleEl.removeClass('active');
 
-                //stop propagation when an element in the list offcanvas is clicked
-                event.stopPropagation();
-
             });
 
             //increase the width of the menu: set it to the same size as the list
@@ -310,12 +309,9 @@ bootcards._setOrientation = function(init) {
                         //hide the menu on click 
                         var $this = $(this);
                         $this.removeClass('active');
-                        bootcards.offCanvasMenuTitleEl.removeClass('active');
-                        bootcards.listEl.removeClass('active');
-                        bootcards.listTitleEl.removeClass('active'); 
-
-                        //stop propagation when an element in the list offcanvas is clicked
-                        event.stopPropagation();
+                        if (bootcards.offCanvasMenuTitleEl) { bootcards.offCanvasMenuTitleEl.removeClass('active'); }
+                        if (bootcards.listEl) { bootcards.listEl.removeClass('active'); }
+                        if (bootcards.listTitleEl) { bootcards.listTitleEl.removeClass('active'); }
 
                     });
             }
