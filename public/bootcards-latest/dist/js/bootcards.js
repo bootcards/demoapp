@@ -170,7 +170,7 @@ bootcards.hideOffCanvasMenu = function() {
 
 };
 
-bootcards._enablePortraitMode = function() {
+bootcards.enablePortraitMode = function() {
 
     //don't activate on desktop or smartphones
     if ( typeof window.orientation == 'undefined' || bootcards.isXS() ) {
@@ -184,7 +184,7 @@ bootcards._enablePortraitMode = function() {
 
 bootcards._initTabletPortraitMode = function() {
 
-    if (!bootcards._enablePortraitMode() ) {
+    if (!bootcards.enablePortraitMode() ) {
         return;
     }
 
@@ -200,7 +200,7 @@ bootcards._initTabletPortraitMode = function() {
 
 bootcards._setOrientation = function(init) {
 
-    if (!bootcards._enablePortraitMode() ) {
+    if (!bootcards.enablePortraitMode() ) {
         return;
     }
 

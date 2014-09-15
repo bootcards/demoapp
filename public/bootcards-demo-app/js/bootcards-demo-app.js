@@ -1,7 +1,7 @@
 /* toggle between the chart and data */
 function toggleChartData() {
 
-	var $ev = $(event.target)
+	var $ev = $(event.target);
 	var $chart = $ev.parents('.bootcards-chart');
 
 	if ($chart.length>0) {
@@ -35,12 +35,11 @@ bootcards.addPJaxHandlers = function(pjaxTarget) {
 	$('a.pjax').off().on('click', function(e) {
 		var $this = $(this);
 		var tgtUrl = $this.attr('href');
-		//$(pjaxTarget).fadeOut('fast', function() {
-			$.pjax( {
-				container : pjaxTarget,
-				url : tgtUrl
-			})
-		//})
+
+		$.pjax( {
+			container : pjaxTarget,
+			url : tgtUrl
+		});
 
 		//add active class if this is a list item (removing it from all siblings)
 		if ($this.hasClass('list-group-item')) {
@@ -53,7 +52,7 @@ bootcards.addPJaxHandlers = function(pjaxTarget) {
 		e.preventDefault();
 	});
 
-}
+};
 
 /*
  * Setup publish/ subscribe mechanism for changing main menu option
@@ -195,7 +194,7 @@ $(document).ready( function() {
 		}
 
 		//enable single pane portrait mode when loading content with pjax
-		if ( tgtId == 'main') {
+		if ( tgtId == 'main' && bootcards.enablePortraitMode() ) {
 
 			//do some cleaning up first
             if (bootcards.listOffcanvasToggle) {
