@@ -132,7 +132,7 @@ sampleData.read();
 
 //setup menu
 menu = [
-	{ id : 'dashboard', name : 'Dashboard', title : 'Customers (v' + pjson.version + ')', icon : "fa-dashboard", active : false, url : '/dashboard'},
+	{ id : 'dashboard', name : 'Dashboard', title : 'Customers', icon : "fa-dashboard", active : false, url : '/dashboard'},
 	{ id : 'companies', name : "Companies", title : 'Companies', icon : "fa-building-o", active : false, url : '/companies'},
 	{ id : 'contacts', name : "Contacts", title : 'Contacts', icon : "fa-users", active : true, url : '/contacts'},
 	{ id : 'notes', name : "Notes", title : 'Notes', icon : "fa-clipboard", active : false, url : '/notes'},
