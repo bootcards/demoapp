@@ -3,8 +3,7 @@ var bootcards = bootcards || {
     offCanvasToggleEl : null,
     offCanvasMenuEl : null,
     mainContentEl : null,
-    _isXS : null,
-    _simplePortraitMode : false
+    _isXS : null
 
 };
 
@@ -22,10 +21,6 @@ bootcards.init = function( options ) {
 
         if (options.enableTabletPortraitMode) {
 
-           if (options.simplePortraitMode) {
-                bootcards._simplePortraitMode = options.simplePortraitMode;
-           } 
-
            bootcards._initTabletPortraitMode();
 
         }
@@ -41,8 +36,6 @@ bootcards.init = function( options ) {
     if ('standalone' in navigator && 
         navigator.standalone && 
         options.disableBreakoutSelector ) {
-
-        alert('nu');
 
         /*
          * If an app on iOS is added to the home screen and a standard (non ajax)
@@ -230,14 +223,6 @@ bootcards._setOrientation = function(init) {
 
         //hide the az picker
         $('.bootcards-az-picker').hide();
-
-        //in simple mode, we only hide the list column and show the content in full width
-        if ( bootcards._simplePortraitMode ) {
-            bootcards.listEl
-                .hide()
-                .removeClass(bootcards.listColClass);
-            return; //we're done
-        }
 
         if (!bootcards.listOffcanvasToggle) {
             //create the list title & toggle elements
