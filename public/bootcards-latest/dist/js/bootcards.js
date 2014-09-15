@@ -170,11 +170,21 @@ bootcards.hideOffCanvasMenu = function() {
 
 };
 
-
-bootcards._initTabletPortraitMode = function() {
+bootcards._enablePortraitMode = function() {
 
     //don't activate on desktop or smartphones
     if ( typeof window.orientation == 'undefined' || bootcards.isXS() ) {
+        return false;
+    } else {
+        return true;
+    }
+
+};
+
+
+bootcards._initTabletPortraitMode = function() {
+
+    if (!bootcards._enablePortraitMode() ) {
         return;
     }
 
@@ -189,6 +199,10 @@ bootcards._initTabletPortraitMode = function() {
 };
 
 bootcards._setOrientation = function(init) {
+
+    if (!bootcards._enablePortraitMode() ) {
+        return;
+    }
 
     var isPortrait = ($(window).width() > $(window).height())? false : true;
 
