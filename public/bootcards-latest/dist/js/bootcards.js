@@ -3,6 +3,7 @@ var bootcards = bootcards || {
     offCanvasToggleEl : null,
     offCanvasMenuEl : null,
     mainContentEl : null,
+    portraitModeEnabled : false,
     _isXS : null
 
 };
@@ -184,9 +185,11 @@ bootcards.enablePortraitMode = function() {
 
 bootcards._initTabletPortraitMode = function() {
 
-    if (!bootcards.enablePortraitMode() ) {
+    if ( typeof window.orientation == 'undefined' || bootcards.isXS() ) {
         return;
     }
+    
+    bootcards.portraitModeEnabled = true;
 
     $(window)
         .on( 'resize', function() { 
@@ -200,7 +203,7 @@ bootcards._initTabletPortraitMode = function() {
 
 bootcards._setOrientation = function(init) {
 
-    if (!bootcards.enablePortraitMode() ) {
+    if ( !bootcards.portraitModeEnabled ) {
         return;
     }
 

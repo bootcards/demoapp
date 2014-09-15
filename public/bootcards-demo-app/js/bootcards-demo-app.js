@@ -194,7 +194,7 @@ $(document).ready( function() {
 		}
 
 		//enable single pane portrait mode when loading content with pjax
-		if ( tgtId == 'main' && bootcards.enablePortraitMode() ) {
+		if ( tgtId == 'main' && bootcards.portraitModeEnabled ) {
 
 			//do some cleaning up first
             if (bootcards.listOffcanvasToggle) {
