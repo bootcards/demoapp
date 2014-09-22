@@ -27,3 +27,8 @@ and (orientation : portrait) {
  
 
 }
+
+.nav > li > a {
+  padding: 15px 14px;
+}
+
