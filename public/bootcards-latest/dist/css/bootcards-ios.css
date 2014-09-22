@@ -1,4 +1,4 @@
-/* bootcards 0.2.0 2014-09-15 */
+/* bootcards 0.2.0 2014-09-22 */
 /* NAVBAR */
 
 /* OFFCANVAS MENU */
@@ -57,7 +57,6 @@
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-
 
 
 .offcanvaslist-toggle.active {
@@ -996,7 +995,12 @@ html, body {
 .btn:hover,
 .btn:active,
 .btn:focus,
-.btn-group.open .dropdown-toggle {
+.btn-group.open .dropdown-toggle,
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open>.dropdown-toggle.btn-primary {
 	background-color: transparent;
 	border-color: transparent;
 	box-shadow: none;
