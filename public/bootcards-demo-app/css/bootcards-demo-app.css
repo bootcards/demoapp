@@ -17,3 +17,13 @@
   -ms-transform: none;
   transform: none;
 }
+
+@media only screen
+and (orientation : portrait) {
+
+ .bootcards-summary-item h4 {
+  font-size: 16px;
+ }
+ 
+
+}
