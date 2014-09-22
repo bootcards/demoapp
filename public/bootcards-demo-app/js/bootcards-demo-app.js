@@ -1,5 +1,5 @@
 /* toggle between the chart and data */
-function toggleChartData() {
+function toggleChartData(event) {
 
 	var $ev = $(event.target);
 	var $chart = $ev.parents('.bootcards-chart');
