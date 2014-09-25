@@ -82,7 +82,7 @@
 {{#unless company.isNew}}
 <div class="modal-footer">
 	<button type="button" class="btn btn-danger btn-block"
-		onclick="bootcards.confirmDelete('company');">
+		onclick="bootcards.confirmDelete('company'); return false;">
 		<i class="fa fa-trash-o"></i>
 		Delete Company
 	</button>

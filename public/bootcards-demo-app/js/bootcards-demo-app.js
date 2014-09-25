@@ -242,9 +242,9 @@ $(document).ready( function() {
 //show a confirmation dialog before NOT deleting an item: this is a demo app after all...
 bootcards.confirmDelete = function(type) {
 
-	if ( confirm('Are you sure you want to delete this '  + type + '?') ) {
+	if ( confirm('Are you sure?') ) {
 		var modal = $(event.target).closest('.modal');
-		if (modal.length) {
+		if (modal.length>0) {
 			modal.modal('hide');
 		}
 	}
