@@ -248,6 +248,8 @@ bootcards.confirmDelete = function(type) {
 			modal.modal('hide');
 		}
 	}
+	return false;
+
 };
 
 /*
