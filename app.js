@@ -118,6 +118,10 @@ hbs.registerHelper("getCSSforOS", function(session) {
 	}
 });
 
+hbs.registerHelper("isMobile", function(session) {
+	return '<script>var isDesktop = ' + (!session.isIos && !session.isAndroid) + ';</script>';
+});
+
 //helper to get the app version
 hbs.registerHelper("getAppVersion", function() {
 	return pjson.version;

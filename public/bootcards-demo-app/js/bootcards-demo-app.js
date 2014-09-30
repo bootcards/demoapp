@@ -263,8 +263,10 @@ window.addEventListener('load', function() {
 //functions to perform if the main menu option has changed
 $.Topic( "navigateTo" ).subscribe( function(value) {
 	
-	//change header title
-	$('.navbar-brand').text(value);
+	//change header title - only on mobile
+	if (!isDesktop ) {
+		$('.navbar-brand').text(value);
+	}
 
 	//change active menu option in all navigation menus
 	$("a[data-title='" + value + "']").each( function() {
