@@ -80,6 +80,8 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
   
   <!-- Bootcards CSS file (different for desktop, iOS and Android) -->
+  <!-- Note: for this demo app we're using the uncompressed versions: -->
+  <!-- for production you should used the compressed/ minified versions from the bootcards/dist/ folder -->
   {{{getCSSforOS session}}}
 
   {{{isMobile session}}}
@@ -191,7 +193,11 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
   
-  <script src="/bootcards-latest/dist/js/bootcards.js"></script> 
+  <!-- Bootcards JS file -->
+  <!-- Note: for this demo app we're using the uncompressed versions -->
+  <!-- for production you should used the compressed/ minified version from the bootcards/dist/ folder -->
+  <script src="/bower_components/bootcards/src/js/bootcards.js"></script> 
+  
   <script src="/bootcards-demo-app/js/bootcards-demo-app.js"></script> 
 
 	<!--modals-->
