@@ -13,7 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootcards": ">=0.2.0",
+    "bootcards": "master",
     "jquery": "~2.1.0",
     "jquery.ui": "*",
     "bootstrap": "~3.2.0",
