@@ -51,7 +51,7 @@
 			</tbody>
 		</table>
 		<div class="panel-footer">
-			<button class="btn btn-default btn-block" onClick="toggleChartData(event)">
+			<button class="btn btn-default btn-block" onClick="toggleChartData(event, barChartClosedSales)">
 				<i class="fa fa-bar-chart-o"></i>
 				Show Chart
 			</button>				
@@ -74,11 +74,13 @@
  * Clear the target DOM element and draw the sample charts
  * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
  */
+var barChartClosedSales = null;
+
 var drawBarChartClosedSales = function() {
 
 	$("#chartForecastVsQuota").empty();
 
-	Morris.Bar({
+	barChartClosedSales = Morris.Bar({
 		element: 'chartForecastVsQuota',
 		data: [
 			{name: 'Guy Bardsley', forecast: 2750, quota: 4000},
@@ -95,7 +97,7 @@ var drawBarChartClosedSales = function() {
 		hideHover: 'auto'
 	});
 
-}
+};
 
 //draw the charts when the DOM is ready
 $(document).ready( function() {
@@ -105,7 +107,9 @@ $(document).ready( function() {
 //on resize of the page: redraw the charts
 $(window)
 	.on('resize', function() {
-		drawBarChartClosedSales();
+		window.setTimeout( function() {
+			if (barChartClosedSales !== null) { barChartClosedSales.redraw(); }
+		}, 250);
 	});
 
 </script>

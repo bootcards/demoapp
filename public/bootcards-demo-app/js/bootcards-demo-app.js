@@ -1,5 +1,5 @@
 /* toggle between the chart and data */
-function toggleChartData(event) {
+function toggleChartData(event, chart) {
 
 	var $ev = $(event.target);
 	var $chart = $ev.parents('.bootcards-chart');
@@ -18,7 +18,9 @@ function toggleChartData(event) {
 		$data.fadeOut( 'fast', function()  {
 			$data
 				.siblings('.bootcards-chart')
-					.fadeIn('fast');
+					.fadeIn('fast', function() {
+						if (typeof chart != 'undefined' && chart != null) { chart.redraw();}
+					});
 		});
 
 	}
@@ -223,13 +225,17 @@ $(document).ready( function() {
 				bootcards.listTitleEl.find('button').show();
 			}
 
-			//add the resize event again
+			//add the resize events again
 			$(window)
 				.off()
 		        .on( 'resize', function() { 
 		        	setTimeout( function() {
 		                bootcards._setOrientation(false);
-		            } , 150);
+		                if (chartSalesProductType !== null) { chartSalesProductType.redraw(); }
+		                if (closedSalesChart !== null) { closedSalesChart.redraw(); }
+		                if (dbSizeChart !== null) { dbSizeChart.redraw(); }
+		                if (barChartClosedSales !== null) { barChartClosedSales.redraw(); }
+		            } , 250);
 		        } );
                
 		}

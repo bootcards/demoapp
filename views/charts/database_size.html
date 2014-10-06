@@ -48,7 +48,7 @@
 			</table>
 		</div>
 		<div class="panel-footer">
-			<button class="btn btn-default btn-block" onClick="toggleChartData(event)">
+			<button class="btn btn-default btn-block" onClick="toggleChartData(event, dbSizeChart)">
 				<i class="fa fa-bar-chart-o"></i>
 				Show Chart
 			</button>				
@@ -71,26 +71,29 @@
  * Clear the target DOM element and draw the sample charts
  * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
  */
+
+var dbSizeChart = null;
+
 var drawDbSizeChart = function() {
 
 	$("#chartDbSize").empty();
 
-	Morris.Area({
-    element: 'chartDbSize',
-    data: [
-      {period: '2014 Q1', companies: 1256, contacts : 3788},
-      {period: '2014 Q2', companies: 1422, contacts : 4350},
-      {period: '2014 Q3', companies: 1475, contacts : 4495},
-      {period: '2014 Q4', companies: 1528, contacts : 4601}
-    ],
-    xkey: 'period',
-    ykeys: ['companies', 'contacts'],
-    labels: ['Companies', 'Contacts'],
-    pointSize: 2,
-    hideHover: 'auto'
-  });
+	dbSizeChart = Morris.Area({
+	    element: 'chartDbSize',
+	    data: [
+	      {period: '2014 Q1', companies: 1256, contacts : 3788},
+	      {period: '2014 Q2', companies: 1422, contacts : 4350},
+	      {period: '2014 Q3', companies: 1475, contacts : 4495},
+	      {period: '2014 Q4', companies: 1528, contacts : 4601}
+	    ],
+	    xkey: 'period',
+	    ykeys: ['companies', 'contacts'],
+	    labels: ['Companies', 'Contacts'],
+	    pointSize: 2,
+	    hideHover: 'auto'
+	  });
 
-}
+};
 
 //draw the charts when the DOM is ready
 $(document).ready( function() {
@@ -100,7 +103,9 @@ $(document).ready( function() {
 //on resize of the page: redraw the charts
 $(window)
 	.on('resize', function() {
-		drawDbSizeChart();
+		window.setTimeout( function() {
+			if (dbSizeChart !== null) { dbSizeChart.redraw(); }
+		}, 250);
 	});
 
 </script>

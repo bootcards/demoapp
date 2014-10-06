@@ -51,7 +51,7 @@
 			</tbody>
 		</table>
 		<div class="panel-footer">
-			<button class="btn btn-default btn-block" onClick="toggleChartData(event)">
+			<button class="btn btn-default btn-block" onClick="toggleChartData(event, closedSalesChart)">
 				<i class="fa fa-bar-chart-o"></i>
 				Show Chart
 			</button>				
@@ -74,6 +74,8 @@
  * Clear the target DOM element and draw the sample charts
  * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
  */
+var closedSalesChart = null;
+
 var drawChartClosedSales = function() {
 
 	$("#chartClosedSales").empty();
@@ -128,7 +130,7 @@ var drawChartClosedSales = function() {
       return _results;
 	};
 
-	myDonut({
+	closedSalesChart = myDonut({
 	    element: 'chartClosedSales',
 	    data: [
 	      {label: 'Guy Bardsley', value: 550 },
@@ -163,7 +165,9 @@ $(document).ready( function() {
 //on resize of the page: redraw the charts
 $(window)
 	.on('resize', function() {
-		drawChartClosedSales();
+		window.setTimeout( function() {
+			if (closedSalesChart !== null) { closedSalesChart.redraw(); }
+		}, 250);
 	});
 
 </script>

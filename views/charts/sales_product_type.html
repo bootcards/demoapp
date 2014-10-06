@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="panel-footer">
-			<button class="btn btn-default btn-block" onClick="toggleChartData(event)">
+			<button class="btn btn-default btn-block" onClick="toggleChartData(event, chartSalesProductType)">
 				<i class="fa fa-bar-chart-o"></i>
 				Show Chart
 			</button>				
@@ -74,6 +74,8 @@
  * Clear the target DOM element and draw the sample charts
  * Samples come from the morris.js site at http://www.oesmith.co.uk/morris.js/
  */
+var chartSalesProductType = null;
+
 var drawChartSalesProductType = function() {
 
 	$("#chartSalesProductType").empty();
@@ -84,7 +86,7 @@ var drawChartSalesProductType = function() {
        {"period": "2014 Q3", "stingray": 10.2, "barracuda": 35.7, "mako" : 20.6, "sailfish": 9.6 },
        {"period": "2014 Q4", "stingray": 5.9, "barracuda": 20.3, "mako" : 10.5, "sailfish": 14.4 }
   ];
-  Morris.Line({
+  chartSalesProductType = Morris.Line({
     element: 'chartSalesProductType',
     data: sales,
     xkey: 'period',
@@ -92,8 +94,7 @@ var drawChartSalesProductType = function() {
     labels: ['Stingray', 'Barracuda', 'Mako', 'Sailfish']
   });
 
-
-}
+};
 
 //draw the charts when the DOM is ready
 $(document).ready( function() {
@@ -103,7 +104,9 @@ $(document).ready( function() {
 //on resize of the page: redraw the charts
 $(window)
 	.on('resize', function() {
-		drawChartSalesProductType();
+		window.setTimeout( function() {
+			if (chartSalesProductType !== null) { chartSalesProductType.redraw(); }
+		}, 250);
 	});
 
 </script>
