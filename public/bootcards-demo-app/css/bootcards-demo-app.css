@@ -32,3 +32,27 @@ and (orientation : portrait) {
   padding: 15px 14px;
 }
 
+
+/*fullscreen class for iOS web apps that have been added to the home screen*/
+body.fullscreen {
+  padding-top: 64px;
+}
+.fullscreen .offcanvas-list-title {
+  margin-top: 20px;
+}
+.fullscreen .navbar-fixed-top {
+  height: 64px;
+  min-height: 64px;
+  padding-top: 20px;
+}
+.fullscreen .offcanvas {
+  margin-top:65px;
+}
+.fullscreen > .statusbar {
+  background:black;
+  height:20px;
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:1000;
+}

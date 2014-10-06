@@ -87,8 +87,17 @@ $(document).ready( function() {
 		$.Topic( "navigateTo" ).publish( $(this).data("title") );
 	});
 
+	var $body = $("body");
+
+	//fix for status bar bug in iOS 8
+	if (bootcards.isFullScreen) {
+        $body
+        	.prepend("<div class='statusbar' />")
+            .addClass("fullscreen");
+    }
+
     //destroy modals on close (to reload the contents when using the remote property)
-    $('body').on('hidden.bs.modal', '.modal', function () {  	
+    $body.on('hidden.bs.modal', '.modal', function () {  	
   		$(this).removeData('bs.modal');
 	});
 
