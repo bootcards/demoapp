@@ -18,9 +18,8 @@ bower (clientside libraries package manager)
 The following client libraries are used:
 
 - jQuery
-- Bootstrap v3.1.1
+- Bootstrap v3.2
 - jQuery UI (slide animations)
-- Bootstrap Jasny (bootstrap add-ons, used for slide in nav menu)
 - Font Awesome (icons)
 - morris.js (chart demos)
 	- Raphael
