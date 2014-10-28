@@ -94,7 +94,8 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 </body>
 
@@ -192,7 +193,7 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
-  
+
   <!-- Bootcards JS file -->
   <!-- Note: for this demo app we're using the uncompressed versions -->
   <!-- for production you should used the compressed/ minified version from the bootcards/dist/ folder -->
@@ -220,6 +221,7 @@
 
     bootcards.init( {
         offCanvasHideOnMainClick : true,
+        offCanvasBackdrop : true,
         enableTabletPortraitMode : true,
         disableRubberBanding : true,
         disableBreakoutSelector : 'a.no-break-out'
