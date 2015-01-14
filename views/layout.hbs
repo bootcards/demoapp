@@ -163,7 +163,7 @@
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<div class="bootcards-desktop-footer clearfix">
-				<p class="pull-left">Bootcards version 1.0</p>
+				<p class="pull-left">Bootcards v{{getAppVersion}}</p>
 			</div>
 			<div class="btn-group">
 				{{#each menu}}
@@ -181,7 +181,7 @@
 	</div> 
 
   <!-- Load the required JavaScript libraries -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.2/jquery.pjax.min.js"></script>
@@ -192,7 +192,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
   <!-- Bootcards JS file -->
-  <script src="/bower_components/bootcards/dist/js/bootcards.min.js"></script> 
+  <script src="/bower_components/bootcards/dist/js/bootcards.js"></script> 
   
   <script src="/bootcards-demo-app/js/bootcards-demo-app.js"></script> 
 
@@ -216,7 +216,7 @@
 
     bootcards.init( {
         offCanvasHideOnMainClick : true,
-        offCanvasBackdrop : false,
+        offCanvasBackdrop : true,
         enableTabletPortraitMode : true,
         disableRubberBanding : true,
         disableBreakoutSelector : 'a.no-break-out'
