@@ -25,12 +25,12 @@ var hbs 	= require('express-hbs');	//express handlebars
 var moment	= require('moment');		//moment date formatting lib
 var app 	= express();
 
-app.use(express.compress());
+//app.use(express.compress());
 //enable Express session support
 app.use( express.cookieParser() );
 app.use( express.session({secret : 'QWERTY'}));
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', 3000);
 app.engine( 'html', hbs.express3({
 	partialsDir : __dirname + '/views'
 }));
@@ -97,13 +97,13 @@ hbs.registerHelper('count', function(type) {
 
 //helper to get the stylesheet for the current user agent
 hbs.registerHelper("getCSSforOS", function(session) {
-	var bootCardsBase = "/bower_components/bootcards/";
+	var bootCardsBase = "//cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.2/css/";
 	if (session.isAndroid) {
-		return '<link href="' + bootCardsBase + 'dist/css/bootcards-android.min.css" rel="stylesheet" type="text/css" />';
+		return '<link href="' + bootCardsBase + 'bootcards-android.min.css" rel="stylesheet" type="text/css" />';
 	} else if (session.isIos) {
-		return '<link href="' + bootCardsBase + 'dist/css/bootcards-ios.min.css" rel="stylesheet" type="text/css" />';
+		return '<link href="' + bootCardsBase + 'bootcards-ios.min.css" rel="stylesheet" type="text/css" />';
 	} else {
-		return '<link href="' + bootCardsBase + 'dist/css/bootcards-desktop.min.css" rel="stylesheet" type="text/css" />';
+		return '<link href="' + bootCardsBase + 'bootcards-desktop.min.css" rel="stylesheet" type="text/css" />';
 	}	
 });
 

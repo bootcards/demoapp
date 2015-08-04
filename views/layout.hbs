@@ -75,6 +75,9 @@
   
   <!-- Load the required CSS libraries -->
 
+  <!-- bootstrap -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
    <!-- Bootcards CSS file (different for desktop, iOS and Android, included Bootstrap CSS) -->
   {{{getCSSforOS session}}}
 
@@ -95,7 +98,7 @@
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
-</body>
+<body id="bootcards">
 
   <!-- fixed top navbar -->
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -107,15 +110,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand no-break-out" title="Customers" href="/">Customers</a>  
       </div>
+
       <button type="button" class="btn btn-default btn-back pull-left hidden" onclick="history.back()">
         <i class="fa fa-lg fa-chevron-left"></i><span>Back</span>
       </button>
       <!-- menu button to show/ hide the off canvas slider -->
       <button type="button" class="btn btn-default btn-menu pull-left offCanvasToggle" data-toggle="offcanvas">
         <i class="fa fa-lg fa-bars"></i><span>Menu</span>
-      </button>    
+      </button>  
+
+      <a class="navbar-brand no-break-out" title="Customers" href="/">Customers</a>  
+      
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           {{#each menu}}
@@ -181,7 +187,7 @@
 	</div> 
 
   <!-- Load the required JavaScript libraries -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.2/jquery.pjax.min.js"></script>
@@ -192,7 +198,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
   <!-- Bootcards JS file -->
-  <script src="/bower_components/bootcards/dist/js/bootcards.js"></script> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.2/js/bootcards.min.js"></script> 
   
   <script src="/bootcards-demo-app/js/bootcards-demo-app.js"></script> 
 
